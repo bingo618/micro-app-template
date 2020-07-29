@@ -1,4 +1,5 @@
 import pathToRegexp from 'path-to-regexp';
+export const IS_MRICO_ENV = window.__POWERED_BY_QIANKUN__;
 
 export function pathMatchRegexp(regex: string, pathname: string) {
   return pathToRegexp(regex).exec(pathname);
@@ -6,7 +7,7 @@ export function pathMatchRegexp(regex: string, pathname: string) {
 
 /**
  * 分页数据格式化
- * @param result 
+ * @param result
  */
 export function formatTableResult(result: any) {
   const { total = 0, rows = [] } = result?.data;
@@ -18,14 +19,13 @@ export function formatTableResult(result: any) {
 
 /**
  * 分页数据格式化
- * @param result 
+ * @param result
  */
 export function formatProTableResult(result: any) {
   const { total = 0, rows = [] } = result?.data;
   return {
     total: total || 0,
     data: rows || [],
-    success: result.errcode === '0'
+    success: result.errcode === '0',
   };
 }
-

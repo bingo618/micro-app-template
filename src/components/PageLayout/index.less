@@ -1,0 +1,46 @@
+@import '../../styles/theme.less';
+
+.layout {
+  width: '100%';
+  min-height: 100vh;
+
+  :global {
+    .layout {
+      &__sider {
+        position: fixed;
+        left: 0;
+        height: 100%;
+        box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+        z-index: 88;
+      }
+
+      &__logo {
+        width: 100%;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+      }
+
+      &__content {
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+.header {
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 77;
+
+  :global {
+    .ant-page-header-footer {
+      margin-top: 0;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  color: @text-color-secondary;
+}

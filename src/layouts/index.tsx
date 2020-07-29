@@ -1,27 +1,25 @@
 import React from 'react';
-import styles from './index.less';
-import { Layout, Menu } from 'antd';
-import { history, useModel } from 'umi';
-import { AuthService } from 'yocon-lib';
+import { useModel, formatMessage } from 'umi';
+import PageLayout from '@/components/PageLayout';
+import {
+  BarChartOutlined,
+  TableOutlined,
+  SnippetsOutlined,
+} from '@ant-design/icons';
+const navMenus = [
+  {
+    key: '/',
+    name: '菜单一',
+    icon: <BarChartOutlined />,
+  },
+];
 
-export default function(props: any) {
+function Layout(props: any) {
   const masterProps = useModel('@@qiankunStateFromMaster');
-  //AuthService.setToken(masterProps.token);
-  return (
-    <Layout
-      className={styles.layout}
-      style={{ width: '100%', minHeight: '100vh' }}
-    >
-      <Layout.Sider className="site-page-sider" width={220} theme="light">
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          style={{ height: '100%', borderRight: 0 }}
-        >
-          <Menu.Item key="1">菜单1</Menu.Item>
-        </Menu>
-      </Layout.Sider>
-      <Layout className={styles.content}>{props.children}</Layout>
-    </Layout>
-  );
+  //console.log(masterProps);
+  // AuthService.setToken(masterProps?.globalState?.token || '');
+  //setLocale('zh-CN');
+  return <PageLayout menus={navMenus}>{props.children}</PageLayout>;
 }
+
+export default Layout;
