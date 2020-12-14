@@ -5,7 +5,7 @@ import pathToRegexp from 'path-to-regexp';
 import qs from 'qs';
 import config from './config';
 import { history, getLocale } from 'umi';
-import { message } from 'antd';
+import { message, notification } from 'antd';
 
 /**
  * 添加请求头
@@ -59,7 +59,7 @@ interface errorProps {
 const handleInsideError = (error: errorProps) => {
   if (error.errcode === '1003') {
     history.replace({
-      pathname: '/login',
+      pathname: '/../../login',
     });
   }
   message.error(error.errmsg);
