@@ -1,6 +1,6 @@
 import React from 'react';
+import { PageContainer } from 'yocon-lib';
 import styles from './index.less';
-import PageContainer from '@/components/PageLayout/PageContainer';
 
 export default () => {
   return (

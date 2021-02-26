@@ -1,11 +1,11 @@
 import React from 'react';
 import { useModel, formatMessage } from 'umi';
-import PageLayout from '@/components/PageLayout';
 import {
   BarChartOutlined,
   TableOutlined,
   SnippetsOutlined,
 } from '@ant-design/icons';
+import { PageLayout } from 'yocon-lib';
 const navMenus = [
   {
     key: '/',
@@ -19,7 +19,11 @@ function Layout(props: any) {
   //console.log(masterProps);
   // AuthService.setToken(masterProps?.globalState?.token || '');
   //setLocale('zh-CN');
-  return <PageLayout menus={navMenus}>{props.children}</PageLayout>;
+  return (
+    <PageLayout navPorps={{ menus: navMenus }} breadcrumbs={{}}>
+      {props.children}
+    </PageLayout>
+  );
 }
 
 export default Layout;
