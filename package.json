@@ -23,8 +23,8 @@
     ]
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^5.0.12",
-    "@ant-design/pro-table": "^2.4.3",
+    "@ant-design/pro-layout": "^6.26.5",
+    "@ant-design/pro-table": "^2.5.63",
     "@umijs/plugin-qiankun": "^2.17.3",
     "@umijs/preset-react": "^1.5.19",
     "@umijs/test": "^3.2.9",
@@ -32,11 +32,11 @@
     "prettier": "^1.19.1",
     "qiankun": "^2.3.1",
     "aliyunoss-webpack-plugin": "^0.2.1",
-    "antd": "^4.6.1",
+    "antd": "^4.18.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "umi": "^3.2.27",
-    "yocon-lib": "^0.0.50",
+    "umi": "^3.5.0",
+    "yocon-lib": "^0.0.54",
     "yorkie": "^2.0.0"
   },
   "devDependencies": {

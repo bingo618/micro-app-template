@@ -7,6 +7,11 @@ export default defineConfig({
   dynamicImport: {
     loading: '@/components/Loading',
   },
+  antd: {
+    config: {
+      prefixCls: 'test',
+    },
+  },
   hash: true,
   ignoreMomentLocale: true,
   locale: {
@@ -28,7 +33,8 @@ export default defineConfig({
     slave: {},
   },
   theme: {
-    '@primary-color': '#008fd7',
+    '@primary-color': '#4c64fe',
+    '@ant-prefix': 'test',
   },
   chainWebpack(config) {
     config.plugin('moment2dayjs').use('antd-dayjs-webpack-plugin');
