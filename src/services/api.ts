@@ -1,12 +1,16 @@
-const api = {
+import { apiFunc } from "yocon-lib";
 
-  /**
-   * use: 接口用途
-   * doc: 接口文档地址
-   */
-  getData: 'GET /**/**/test',
-
-
+const apiMap = {
+    /**
+     * use:
+     * doc:
+     */
+    getUser: "GET ****",
 };
+
+const api: Record<
+    keyof typeof apiMap,
+    <T, P>(data?: T) => Promise<P>
+> = apiFunc(apiMap);
 
 export default api;

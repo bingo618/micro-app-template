@@ -1,45 +1,42 @@
-import React, { useState } from 'react';
-import { BarChartOutlined } from '@ant-design/icons';
-import { AuthService, PageLayout, LoginModal } from 'yocon-lib';
-import { useLocation, history } from 'umi';
-import { message } from 'antd';
-import { IS_MRICO_ENV } from '@/utils';
-const navMenus = [
-  {
-    key: '/',
-    name: '菜单一',
-    icon: <BarChartOutlined />,
-  },
-];
+import React from "react";
+import { AuthService, PageLayout } from "yocon-lib";
+import { useLocation, history, Link } from "umi";
+import { message } from "antd";
+import { BarChartOutlined } from "@ant-design/icons";
+import { IS_MRICO_ENV } from "@/utils";
+import routes from "@/config/routes";
+
+const menuIconMap = {
+    BarChartOutlined: <BarChartOutlined />,
+};
 
 function Layout(props: any) {
-  // AuthService.setToken(masterProps?.globalState?.token || '');
-  const [loginVisble, setLoginVisble] = useState(true);
-  message.config({
-    maxCount: 1,
-  });
+    const { pathname } = useLocation();
+    message.config({
+        maxCount: 1,
+    });
 
-  if (
-    !IS_MRICO_ENV &&
-    process.env.NODE_ENV == 'development' &&
-    !AuthService.isLogin()
-  ) {
     return (
-      <LoginModal
-        visible={loginVisble}
-        onCancel={() => setLoginVisble(false)}
-        onSuccess={() => {
-          setLoginVisble(false);
-          history.replace({ pathname: '/' });
-        }}
-      />
+        <PageLayout
+            pathname={pathname}
+            routes={routes}
+            showLoginModal={
+                !IS_MRICO_ENV &&
+                process.env.NODE_ENV == "development" &&
+                !AuthService.isLogin()
+            }
+            navPorps={{
+                selectedKeys: [pathname],
+                defaultOpenKeys: ["/task", "/warn"],
+                iconMap: menuIconMap,
+                onClick: (e) => history.push({ pathname: e.key }),
+            }}
+            onLoginAction={() => history.replace({ pathname: "/" })}
+            renderBreadcrumb={(link, name) => <Link to={link}>{name}</Link>}
+        >
+            {props.children}
+        </PageLayout>
     );
-  }
-  return (
-    <PageLayout navPorps={{ menus: navMenus }} breadcrumbs={{}}>
-      {props.children}
-    </PageLayout>
-  );
 }
 
 export default Layout;
